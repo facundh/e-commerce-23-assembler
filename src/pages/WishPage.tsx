@@ -1,9 +1,8 @@
-import { Navbar, Wish } from "../components"
+import {  Wish } from "../components"
 
 
-type Props = {}
 
-export const WishPage = (props: Props) => {
+export const WishPage = () => {
   return (
     <>
  

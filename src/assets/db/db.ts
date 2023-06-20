@@ -82,7 +82,7 @@ const products = [
     },
     {
         id:idGenerator(),
-        title:'Adidas Shoes 1950',
+        title:'Nike 3',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, dignissimos.',
         brand:'Nike',
         price: 100,
@@ -91,27 +91,27 @@ const products = [
     },
     {
         id:idGenerator(),
-        title:'Adidas Shoes 1950',
+        title:'Converse',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, dignissimos.',
-        brand:'Home',
+        brand:'Nike',
         price: 100,
         img:home1,
         quantity: 0
     },
     {
         id:idGenerator(),
-        title:'Adidas Shoes 1950',
+        title:'White Nike',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, dignissimos.',
-        brand:'Home',
+        brand:'Converse',
         price: 100,
         img:home2,
         quantity: 0
     },
     {
         id:idGenerator(),
-        title:'Adidas Shoes 1950',
+        title:'Red Nike',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, dignissimos.',
-        brand:'Home',
+        brand:'Nike',
         price: 100,
         img:home3,
         quantity: 0
