@@ -1,6 +1,7 @@
-import { FC,  ReactElement } from 'react'
-import products from '../../assets/db/db'
+import { FC,  ReactElement, useState } from 'react'
+// import products from '../../assets/db/db'
 import Card from '@mui/material/Card';
+import { EventType, ProductsStateTypes } from '../../types/types';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -8,18 +9,15 @@ import { Button, CardActionArea, CardActions, Container, Grid } from '@mui/mater
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShareIcon from '@mui/icons-material/Share';
-import {useSnackbar} from 'notistack'
+import { ProductConsumer } from '../../context/ProductProvider';
 
 
-export const Home:FC = () => {
-    const { enqueueSnackbar} = useSnackbar();
-    const handleClickCart = ():void => {
-        enqueueSnackbar("Agregado al carrito", { variant:'success'})
-    }
-  
-    const handleClickWish = ():void => {
-        enqueueSnackbar("Agregado a la lista de deseos", { variant:'success'})
-    }
+
+
+export const Home:FC<ProductsStateTypes> = () => {
+    const { handleAddToCart, handleAddToWish,shoes } = ProductConsumer();
+    const [stateClickEvent, setStateClickEvent] = useState<boolean>(false);
+   
 
   return (
 <>
@@ -34,8 +32,7 @@ export const Home:FC = () => {
                
             }}
         >
-       {products.map(({id, img, brand, title, description, price}):ReactElement => (
-     
+       {shoes.map(({id, img, brand, title, description, price, quantity}):ReactElement => (
 
          <Card key={id} sx={{ width:450 ,maxWidth: '100%', marginBottom:10, marginTop:10 }}>
              
@@ -65,11 +62,11 @@ export const Home:FC = () => {
            </CardContent>
          </CardActionArea>
          <CardActions>
-           <Button size="small" color="primary" startIcon={<FavoriteIcon />} onClick={handleClickWish} >
+           <Button size="small" color="primary" startIcon={<FavoriteIcon />} onClick={() => handleAddToWish(id)} >
                 Add Wish List
             
            </Button>
-           <Button size="small" color="info" startIcon={<ShoppingCartIcon />} onClick={handleClickCart}>
+           <Button size="small" color="info" startIcon={<ShoppingCartIcon />} onClick={() => handleAddToCart(id)}>
                 Add Cart
            </Button>
            <Button size="small" color="success" startIcon={<ShareIcon />}>

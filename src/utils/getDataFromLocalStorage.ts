@@ -1,5 +1,5 @@
 export const getProductsFromLocalStorageCart = ():any => {
-    const productsInLocalStorageCart = localStorage.getItem('carts');
+    const productsInLocalStorageCart = localStorage.getItem('cart');
     if(productsInLocalStorageCart){
         try {
             return JSON.parse(productsInLocalStorageCart);
@@ -10,6 +10,7 @@ export const getProductsFromLocalStorageCart = ():any => {
 
     return []
 } 
+
 export const getProductsFromLocalStorageWish = ():any => {
     const productsInLocalStorageWish= localStorage.getItem('wish');
     if(productsInLocalStorageWish){

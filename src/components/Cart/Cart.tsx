@@ -1,3 +1,4 @@
+import {FC} from 'react'
 import products from '../../assets/db/db';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,10 +8,13 @@ import { Box, Button, CardActionArea, CardActions, Container, Grid, Paper } from
 import ShopIcon from '@mui/icons-material/Shop';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShareIcon from '@mui/icons-material/Share';
+import { getProductsFromLocalStorageCart } from '../../utils/getDataFromLocalStorage';
 // type Props = {}
 
 export const Cart:FC = () => {
 
+  const productsInCart = getProductsFromLocalStorageCart();
+  console.log(productsInCart);
   return (
 <>
       
@@ -53,9 +57,12 @@ export const Cart:FC = () => {
              </Typography>
            </CardContent>
          </CardActionArea>
-         <CardActions>
+         <CardActions sx={{display:{xs:'flex', flexDirection:'column', }}}>
            <Button size="medium" color="primary" startIcon={<ShopIcon />}>
              Buy Now
+           </Button>
+           <Button size="medium" color="primary" >
+             Add Product + 1
            </Button>
            <Button size="medium" color="primary" startIcon={<DeleteIcon />}>
              Delete Product

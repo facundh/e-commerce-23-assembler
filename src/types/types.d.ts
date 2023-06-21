@@ -7,18 +7,19 @@ export type ButtonAction = {
 	id: string;
 	display: string;
 	quantity:number,
-	
 };
 
 export type Props = {
-    childre:ReactNode
+    children:ReactNode
 }
 
 export type ProductsStateTypes = {
     products: ProductProps[],
-    handleAddProduct: (product:ProductProps) => void
+    handleAddToCart: (id:string) => void
+    handleAddToWish: (id:string) => void
     handleRemoveProduct: (id:string) => void
-    handleShareProduct: (id:string) => void
+    handleSharedProduct: (id:string) => void
+    
 }
 
 export type ProductProps = {
@@ -30,7 +31,7 @@ export type ProductProps = {
     brand:string,
     price:number
 }
-export type EventtType = FormEvent<HTMLFormElement>
+export type EventType = FormEvent<HTMLFormElement>
 export type ProductActionType = {
     type:string
     payload:ProductProps

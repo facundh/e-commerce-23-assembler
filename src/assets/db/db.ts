@@ -1,4 +1,5 @@
 import { idGenerator } from "../../utils/idGenerator";
+import { ProductProps } from "../../types/types";
 
 import adidas1 from '../img/adidas/adidas1.jpg';
 import adidas2 from '../img/adidas/adidas2.jpg';
@@ -16,7 +17,7 @@ import home3 from '../img/home/taylor-smith-aDZ5YIuedQg-unsplash.jpg';
 
 
 
-const products = [
+export const products:ProductProps[] = [
     {
         id:idGenerator(),
         title:'Adidas Shoes 1920',
