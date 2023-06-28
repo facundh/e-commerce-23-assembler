@@ -18,7 +18,7 @@ export type ProductsStateTypes = {
     handleAddToCart: (id:string) => void
     handleAddToWish: (id:string) => void
     handleDeleteProduct: (id:string) => void
-    handleSharedProduct: (id:string) => void
+    handleChangeParams:(title:string) => void
 
 }
 
@@ -28,7 +28,7 @@ export type ProductProps = {
     img:string;
     description:string;
     quantity:number,
-    brand:string,
+    store:string,
     price:number
 }
 export type EventType = FormEvent<HTMLFormElement>

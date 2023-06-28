@@ -4,7 +4,7 @@
             "id": "539a8e13-dc91-4381-80e8-6bf47940a5c3",
             "title": "Casillero del Diablo Malbec 2021",
             "description": "Aroma: Fruta roja fresca las cuales se complementan muy bien con toques de chocolate y vainilla. Boca: Buen cuerpo y concentración, fresco y frutal, buena acidez, un buen final de boca agradable y largo. Color: Rojo intenso y brillante.",
-            "bodega": "Concha y Toro",
+            "store": "Concha y Toro",
             "price": 1800,
             "img": "./src/assets/img/malbec/malbec1.webp",
             "quantity": 1
@@ -13,7 +13,7 @@
             "id": "6529b4c6-1097-46ce-9ece-4d29bef87b26",
             "title": "Trapiche Gran Medalla Malbec 2019",
             "description": "Tiene aromas a cerezas maduras, arándanos, ciruelas, clavo, granos de pimienta y chocolate con menta. Es de cuerpo completo con taninos carnosos y suaves y una acidez brillante. Excelente concentración de fruta jugosa de bayas maduras con un sutil toque picante y picante.",
-            "bodega": "Trapiche",
+            "store": "Trapiche",
             "price": 9870,
             "img": "./src/assets/img/malbec/malbec2.webp",
             "quantity": 1
@@ -22,7 +22,7 @@
             "id": "6529b4c6-1097-46ce-9ece-4d29bef87b27",
             "title": "Fincas Notables Cabernet Sauvignon 2016",
             "description": "Aroma concentrado y especiado. Se destacan los pimientos morrones, roble, chocolate negro, dulce de cassis. Limpio y persistente. Característico Cabernet Sauvignon Cafayateño.En boca, taninos de gran envergadura, maduros y sensaciones de tiza. Armónico con percepción de frutas negras y chocolate. Roble acompañando al vino. Persistencia larga y elegante.",
-            "bodega": "El Esteco",
+            "store": "El Esteco",
             "price": 7425,
             "img": "./src/assets/img/cabernet/cabernet1.webp",
             "quantity": 1
@@ -31,7 +31,7 @@
             "id": "6529b4c6-1097-46ce-9ece-4d29bef87b28",
             "title": "Fincas Notables Cabernet Franc 2018",
             "description": "De color rojo de buena intensidad con reflejos rubíes, fondo oscuro con notas negras. Limpio y brillante. Lágrimas coloreadas. Aroma concentrado y especiado. Se destacan el pimiento verde combinado con notas de mentol. Roble integrado de mediana intensidad. Intenso y muy fresco. Limpio, largo y persistente.",
-            "bodega": "El Esteco",
+            "store": "El Esteco",
             "price": 7425,
             "img": "./src/assets/img/cabernet/cabernet2.webp",
             "quantity": 1
@@ -40,7 +40,7 @@
             "id": "6529b4c6-1097-46ce-9ece-4d29bef87b29",
             "title": "Zuccardi Fosil San Pablo Chardonnay 2021",
             "description": "Fósil es un vino blanco de montaña. Proviene de un viñedo en el Paraje Estancia dentro de la IG San Pablo, a 1400 metros de altura, y a tan sólo 300 metros de distancia del inicio de la Cordillera.",
-            "bodega": "Zuccardi Valle de Uco",
+            "store": "Zuccardi Valle de Uco",
             "price": 24975,
             "img": "./src/assets/img/torrontes/chardonay.webp",
             "quantity": 1
@@ -49,7 +49,7 @@
             "id": "6529b4c6-1097-46ce-9ece-4d29bef87b30",
             "title": "El Esteco Old Vines Torrontes 2022",
             "description": "El Old Vines Torrontés 2022 proviene de viñas viejas plantadas en 1945 en Cafayate sobre suelos profundos y arenosos. Se cosechó temprano porque Marcelo Belmonte me dijo que “el alcohol mata el terroir”. Fermentó con levaduras autóctonas a baja temperatura en huevos de cemento y maduró allí con sus lías durante siete a nueve meses. Tiene un grado alcohólico moderado de 13,3% y conserva muy buena acidez y frescura. Tiene una nariz clásica de talco y pétalo de rosa y limitadas reminiscencias de Moscatel en forma de azahar y cítricos.",
-            "bodega": " El Esteco",
+            "store": " El Esteco",
             "price": 5756,
             "img": "./src/assets/img/torrontes/torrontes1.webp",
             "quantity": 1

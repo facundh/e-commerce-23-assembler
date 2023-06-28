@@ -1,7 +1,8 @@
 import {FC,  createContext, useContext, useEffect,useState,useReducer} from 'react';
 import { Props, ProductsStateTypes, ProductProps, ProductActionType } from '../types/types';
 import {  useSnackbar } from 'notistack';
-import getProducts from '../api/getProducts';
+import { useSearchParams } from 'react-router-dom';
+
 
 
 
@@ -12,7 +13,8 @@ export const ProductConsumer = ():ProductsStateTypes| ProductProps | undefined =
 
 const ProductProvider: FC<Props> = ({children}) => {
     
-    const [products, setProducts] = useState<[]>([])
+    const [products, setProducts] = useState<[]>([]);
+
 
     const { enqueueSnackbar} = useSnackbar();
     // const [cart, dispatchCart] = useReducer(shoppingCartReducer, Cart, init);
