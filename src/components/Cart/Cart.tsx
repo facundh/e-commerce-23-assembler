@@ -1,27 +1,25 @@
-import {FC} from 'react'
-import products from '../../assets/db/db';
+import { FC, ReactElement, useState } from 'react';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea, CardActions, Container, Grid, Paper } from '@mui/material';
+import { Button, CardActionArea, CardActions, Container} from '@mui/material';
 import ShopIcon from '@mui/icons-material/Shop';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ShareIcon from '@mui/icons-material/Share';
-import { getProductsFromLocalStorageCart } from '../../utils/getDataFromLocalStorage';
-// type Props = {}
+import { ProductConsumer } from '../../context/ProductProvider';
+import { ProductProps } from '../../types/types';
+
+
+
 
 export const Cart:FC = () => {
-
-  const productsInCart = getProductsFromLocalStorageCart();
-  console.log(productsInCart);
+  // const {handleDeleteProduct, cart} = ProductConsumer();
+ 
   return (
-<>
-      
-
+    <>
     <Container sx={{display:'flex', gap:10}}>
         <Container
-          
             maxWidth="md"
             sx={{
                 display:"flex",
@@ -30,12 +28,12 @@ export const Cart:FC = () => {
                 justifyContent:"space-between",
                 padding:4,
                 width:'100%',
-               
-                
-
             }}
         >
-       {products.map(({id, img, brand, title, description, price}):ReactElement => (
+
+       {/* {
+       cart.map(({id, title, price, description, img}:ProductProps):ReactElement => (
+        
          <Card key={id} sx={{ maxWidth: 345, marginBottom:10, marginTop:10 }}>
          <CardActionArea sx={{
             display:"flex",
@@ -45,7 +43,7 @@ export const Cart:FC = () => {
            <CardMedia
              component="img"
              image={img}
-             alt={brand}
+             alt={title}
              sx={{height:250, gap:5}}
            />
            <CardContent>
@@ -64,13 +62,13 @@ export const Cart:FC = () => {
            <Button size="medium" color="primary" >
              Add Product + 1
            </Button>
-           <Button size="medium" color="primary" startIcon={<DeleteIcon />}>
+           <Button size="medium" color="primary" startIcon={<DeleteIcon />} onClick={() => handleDeleteProduct(id)}>
              Delete Product
            </Button>
          </CardActions>
        </Card>
        ))
-}
+} */}
         </Container>
             <Container  sx={{
             maxWidth:'xs',
@@ -82,7 +80,6 @@ export const Cart:FC = () => {
             justifyContent:'center',
             alignItems:'center'
 
-            
           }}>
             <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bolder', fontSize:30}}>
                 Total $1000

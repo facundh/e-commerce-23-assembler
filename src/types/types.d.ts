@@ -17,9 +17,9 @@ export type ProductsStateTypes = {
     products: ProductProps[],
     handleAddToCart: (id:string) => void
     handleAddToWish: (id:string) => void
-    handleRemoveProduct: (id:string) => void
+    handleDeleteProduct: (id:string) => void
     handleSharedProduct: (id:string) => void
-    
+
 }
 
 export type ProductProps = {
@@ -32,7 +32,8 @@ export type ProductProps = {
     price:number
 }
 export type EventType = FormEvent<HTMLFormElement>
+
 export type ProductActionType = {
     type:string
-    payload:ProductProps
+    payload:string | number | boolean 
 }

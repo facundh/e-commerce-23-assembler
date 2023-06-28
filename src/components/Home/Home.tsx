@@ -1,22 +1,19 @@
 import { FC,  ReactElement, useState } from 'react'
-// import products from '../../assets/db/db'
 import Card from '@mui/material/Card';
-import { EventType, ProductsStateTypes } from '../../types/types';
+import {  ProductProps, ProductsStateTypes } from '../../types/types';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Container, Grid } from '@mui/material';
+import { Button, CardActionArea, CardActions, Container } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShareIcon from '@mui/icons-material/Share';
 import { ProductConsumer } from '../../context/ProductProvider';
 
 
-
-
 export const Home:FC<ProductsStateTypes> = () => {
-    const { handleAddToCart, handleAddToWish,shoes } = ProductConsumer();
-    const [stateClickEvent, setStateClickEvent] = useState<boolean>(false);
+    const { products } = ProductConsumer();
+ 
    
 
   return (
@@ -32,9 +29,9 @@ export const Home:FC<ProductsStateTypes> = () => {
                
             }}
         >
-       {shoes.map(({id, img, brand, title, description, price, quantity}):ReactElement => (
+       {products.map(({id, img, brand, title, description, price, quantity}:ProductProps):ReactElement => (
 
-         <Card key={id} sx={{ width:450 ,maxWidth: '100%', marginBottom:10, marginTop:10 }}>
+         <Card key={id} sx={{ width:450 ,maxWidth: '100%', marginBottom:10, marginTop:10, height:850 }}>
              
          <CardActionArea sx={{
              display:"flex",
@@ -45,9 +42,9 @@ export const Home:FC<ProductsStateTypes> = () => {
              component="img"
              image={img}
              alt={brand}
-             sx={{height:250, gap:5}}
+             sx={{height:400, gap:1}}
            />
-           <CardContent>
+           <CardContent sx={{display:"flex", flexDirection:"column"}}>
              <Typography gutterBottom variant="h5" component="div">
                {title}
              </Typography>
@@ -61,12 +58,11 @@ export const Home:FC<ProductsStateTypes> = () => {
              </Typography>
            </CardContent>
          </CardActionArea>
-         <CardActions>
-           <Button size="small" color="primary" startIcon={<FavoriteIcon />} onClick={() => handleAddToWish(id)} >
+         <CardActions sx={{display:"flex", alignItems:"center", justifyContent:"center", marginTop:0}}>
+           <Button size="small" color="primary" startIcon={<FavoriteIcon />}  >
                 Add Wish List
-            
            </Button>
-           <Button size="small" color="info" startIcon={<ShoppingCartIcon />} onClick={() => handleAddToCart(id)}>
+           <Button size="small" color="info" startIcon={<ShoppingCartIcon />} >
                 Add Cart
            </Button>
            <Button size="small" color="success" startIcon={<ShareIcon />}>

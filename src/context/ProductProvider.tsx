@@ -1,53 +1,58 @@
 import {FC,  createContext, useContext, useEffect,useState,useReducer} from 'react';
-import { Props, ProductsStateTypes } from '../types/types';
-import { useSnackbar } from 'notistack';
-import { shoppingCartReducer } from './actions';
-import products from '../assets/db/db';
-import { getProductsFromLocalStorageCart, getProductsFromLocalStorageWish } from '../utils/getDataFromLocalStorage';
+import { Props, ProductsStateTypes, ProductProps, ProductActionType } from '../types/types';
+import {  useSnackbar } from 'notistack';
+import getProducts from '../api/getProducts';
+
+
 
 const ProductContext = createContext<ProductsStateTypes | undefined>(undefined);
 
-export const ProductConsumer = ():ProductsStateTypes | undefined => useContext(ProductContext);
+export const ProductConsumer = ():ProductsStateTypes| ProductProps | undefined => useContext(ProductContext);
+ 
 
 const ProductProvider: FC<Props> = ({children}) => {
-    const cart = getProductsFromLocalStorageCart();
-    const wish =  getProductsFromLocalStorageWish();
+    
+    const [products, setProducts] = useState<[]>([])
 
-    // useEffect(() => {
-    //     getProductsFromLocalStorageCart();
-    //     getProductsFromLocalStorageWish();
-    // }, [])
-
-    const [ cartProducts, setCartProducts ] = useState(cart || []);
-    const [ wishProducts, setWishProducts ] = useState(wish || []);
-    
-    
-    
-    const [shoes, dispatch] = useReducer(shoppingCartReducer, products);
     const { enqueueSnackbar} = useSnackbar();
-    console.log(shoes)
-   
+    // const [cart, dispatchCart] = useReducer(shoppingCartReducer, Cart, init);
 
-    const handleAddToCart = (id:any) => {
-        enqueueSnackbar('Added to cart', {variant:'success'}),
-        dispatch({
-            type:'ADD_PRODUCT_TO_CART',
-            payload:id
-        })
-        return setCartProducts(localStorage.setItem('cart', JSON.stringify([...cart, id])))
-    }
+    useEffect(() => {
+        const getProducts = async():Promise<void> => {
+            try {
+                const response = await fetch(import.meta.env.VITE_API_URL);
+                const data =    await response.json();
+                setProducts(data)
+            } catch (error) {
+                console.log('error');
+            }
+        }
+           getProducts();
+ 
+            
+    },[])
 
-    const handleAddToWish = (id:any) => {
-        enqueueSnackbar('Added to Wish List', {variant:'info'}),
-        dispatch({
-            type:'ADD_PRODUCT_TO_WISH',
-            payload:id
-        })
-        return setWishProducts(localStorage.setItem('wish', JSON.stringify([...wish, id])))
-    }
+    // const handleAddToCart = (id:string):void => {
+    //     enqueueSnackbar('Added to cart', {variant:'success'}),
+    //     dispatchCart({
+    //         type:'ADD_PRODUCT_TO_CART',
+    //         payload:id
+    //     })
+    // }
+    // const handleDeleteProduct = (id:string):void => {
+    //     enqueueSnackbar('Deleted Product', {variant:'error'}),
+    //     dispatchCart({
+    //         type:'DELETE_PRODUCT_TO_CART',
+    //         payload:id
+    //     })
+    // }
+
+
+    
+ 
   return (
     <>
-        <ProductContext.Provider value={{handleAddToCart, handleAddToWish, cartProducts, wishProducts,shoes}}>
+        <ProductContext.Provider value={{products}}>
                 {children}
         </ProductContext.Provider>
     </>

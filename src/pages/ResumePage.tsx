@@ -1,14 +1,14 @@
-import { Cart, Navbar } from "../components"
+import { Cart } from "../components"
 
 
-type Props = {}
 
-export const ResumePage = (props: Props) => {
+
+export const ResumePage = () => {
   return (
     <>
        
         <Cart />
-        
+
     </>
   )
 }

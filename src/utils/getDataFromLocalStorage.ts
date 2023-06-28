@@ -7,7 +7,6 @@ export const getProductsFromLocalStorageCart = ():any => {
             throw new Error( 'Error al cargar la pagina')
         }
     }
-
     return []
 } 
 

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 
 
-export const NavListDrawer = ({navLinks,  setOpen}) => {
+export const NavListDrawer = ({navLinks,  setOpen}):ReactElement => {
      
   return (
     <Box sx={{width:250}}>
