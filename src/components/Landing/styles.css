@@ -1,0 +1,16 @@
+.layout_container{
+    background-image: url('../../assets/img/landing/sigmund-Z5AKtkHRjsQ-unsplash.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.layout_btn:hover{
+    background: orange;
+}
+.layout_title{
+    font-size: 60px;
+    font-weight: bold;
+    color: orange;
+}

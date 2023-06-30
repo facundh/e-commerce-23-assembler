@@ -9,6 +9,7 @@ import { WishPage } from '../pages/WishPage';
 import { ResumePage } from '../pages/ResumePage';
 import ErrorPage from '../pages/ErrorPage';
 import ProductDetailPage from '../pages/ProductDetailPage';
+import LandingPage from '../pages/LandingPage';
 
 
 
@@ -16,7 +17,8 @@ import ProductDetailPage from '../pages/ProductDetailPage';
 
 
 
-const AppRouter = ():ReactElement => {
+
+const WebRoutes = ():ReactElement => {
   return (
     <>
    
@@ -24,8 +26,9 @@ const AppRouter = ():ReactElement => {
        <Navbar />
      
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route path='/products' element={<HomePage />}/>
-          <Route path='products/:productStore' element={<ProductDetailPage />}/>
+          <Route path='/products/:productStore' element={<ProductDetailPage />}/>
           <Route path='/wish' element={<WishPage />}/>
           <Route path='/cart' element={<ResumePage />}/>
           <Route path='*' element={<ErrorPage />}/>
@@ -36,4 +39,4 @@ const AppRouter = ():ReactElement => {
   )
 }
 
-export default AppRouter
+export default WebRoutes

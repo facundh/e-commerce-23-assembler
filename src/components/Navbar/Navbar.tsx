@@ -7,6 +7,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import StarIcon from '@mui/icons-material/Star';
 
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import { CartConsumer } from "../../context/CartProvider";
+import { ProductProps } from '../../types/types';
 
 
 const navLinks = [
@@ -28,6 +30,7 @@ const navLinks = [
 ]
 
 export const Navbar = ():ReactElement => {
+
   const [open, setOpen] = useState<boolean>(false);
   
 
@@ -51,6 +54,7 @@ export const Navbar = ():ReactElement => {
               <MenuIcon sx={{flexGrow:1}} />
             </IconButton>
             <Box sx={{display:{ xs:'none', sm:'none', md:'flex'}}}>
+        
                 {
                   navLinks.map((item) => (
                     <Button color="inherit" key={item.title} component={NavLink} to={item.path}>

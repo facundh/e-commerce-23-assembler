@@ -5,4 +5,5 @@ const getProducts = async():Promise<[]> => {
   return data
 }
 
+
 export default getProducts;

@@ -1,7 +1,8 @@
 import { CssBaseline } from '@mui/material';
-import AppRouter from './Router/AppRouter'
 import { SnackbarProvider } from 'notistack';
 import { ProductProvider } from './context/ProductProvider';
+import WebRoutes from './Router/WebRoutes.routes';
+import { CartProvider } from './context/CartProvider';
 
 function App() {
 
@@ -10,8 +11,10 @@ function App() {
     <>  
         <SnackbarProvider maxSnack={3} autoHideDuration={2000}>
           <ProductProvider>
+            <CartProvider>
                 <CssBaseline/>
-                <AppRouter />
+                <WebRoutes />
+            </CartProvider>
           </ProductProvider>
       </SnackbarProvider>
     </>

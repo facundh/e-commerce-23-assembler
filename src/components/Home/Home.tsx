@@ -1,23 +1,20 @@
 import { FC,  ReactElement } from 'react'
-
 import {  ProductProps, ProductsStateTypes } from '../../types/types';
-
 import { ProductConsumer } from '../../context/ProductProvider';
-import {  useSearchParams } from 'react-router-dom';
+import {   useSearchParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@material-ui/core';
 import Cards from '../Cards/Cards';
-import { InputAdornment, TextField } from '@mui/material';
-
+import { Container, InputAdornment, TextField } from '@mui/material';
 
 
 export const Home:FC<ProductsStateTypes> = () => {
     
-    const { products} = ProductConsumer();
-    console.log(products);
+    const { products } = ProductConsumer();
+  
     const [searchParams, setSearchParams] = useSearchParams();
     
-    const query = searchParams.get('q');
+    const query = searchParams.get('q') || '';
     
 
     const handleChangeParams = ({target}) => {
@@ -27,12 +24,12 @@ export const Home:FC<ProductsStateTypes> = () => {
   return (
     <>
 
-     
+    <Container maxWidth="lg">
       <TextField
-       hiddenLabel
+                        hiddenLabel
                         id="filled-hidden-label-normal"
                         variant="filled"
-                        sx={{marginLeft:30, width:'60%',marginTop:10, alignSelf:'center'}}
+                        sx={{marginLeft:30, width:'60%',marginTop:10, alignSelf:'center', xs:'width: 100%'}}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -58,13 +55,15 @@ export const Home:FC<ProductsStateTypes> = () => {
                     }
                   })
 
-              .map(({id, img, store, title, description, price, quantity}:ProductProps):ReactElement => (
+              .map((props:ProductProps):ReactElement => (
 
-                  <Cards id={id} img={img} store={store} title={title} description={description} quantity={quantity} price={price} />
+                <Cards {...props} />
+                
               ))
 
 }
       </Box> 
+      </Container>
   </>
 
   )

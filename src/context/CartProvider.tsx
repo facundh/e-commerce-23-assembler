@@ -1,52 +1,52 @@
 import {FC,  createContext, useContext, useEffect,useState,useReducer} from 'react';
-import { Props, ProductsStateTypes, ProductProps, ProductActionType } from '../types/types';
-import { useSnackbar } from 'notistack';
-import { cart as Cart, shoppingCartReducer} from './actions';
+import { Props, ProductsStateTypes, ProductProps } from '../types/types';
+import { initCartStorage, cartReducer } from './cartActions';
+
 
 const CartContext = createContext<ProductsStateTypes | undefined>(undefined);
 
-export const CartConsumer = ():ProductsStateTypes| ProductProps | undefined => useContext(CartContext);
- 
-
 const init = () => {
-    return JSON.parse(localStorage.getItem('cart') as string) || Cart
+    return JSON.parse(localStorage.getItem("cart") as string) || initCartStorage
 }
 
-const ProductProvider: FC<Props> = ({children}) => {
-
-    const { enqueueSnackbar} = useSnackbar();
-    const [cart, dispatchCart] = useReducer(shoppingCartReducer, Cart, init);
+const CartProvider:FC<Props> = ({children}) => {
     
-
+    const [ cart , dispatch ] = useReducer(cartReducer, initCartStorage, init);
+    const [clicked, setClicked] = useState<boolean>(false)
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
-    },[cart]);
-
-
-    const handleAddToCart = (id:string):void => {
-
-        enqueueSnackbar('Added to cart', {variant:'success'}),
-        dispatchCart({
-            type:'ADD_PRODUCT_TO_CART',
+    },[cart])
+    
+    const handleAddToCart = (id:any) => {
+        dispatch({
+            type:"ADD_PRODUCT",
             payload:id
         })
     }
-    const handleDeleteProduct = (id:string):void => {
-        enqueueSnackbar('Deleted Product', {variant:'error'}),
-        dispatchCart({
-            type:'DELETE_PRODUCT_TO_CART',
+    const handleDeleteProduct = (id:any) => {
+        dispatch({
+            type:"DELETE_PRODUCT",
+            payload:id
+        })
+    }
+    const handleUpdateProduct = (id:any) => {
+        dispatch({
+            type:"UPDATE_PRODUCT",
             payload:id
         })
     }
 
- 
-  return (
-    <>
-        <ProductContext.Provider value={{handleAddToCart, productsHome, handleDeleteProduct, cart}}>
+    return(
+        <>
+            <CartContext.Provider value={{handleAddToCart, cart, handleDeleteProduct, handleUpdateProduct, clicked, setClicked}}>
                 {children}
-        </ProductContext.Provider>
-    </>
-  )
+            </CartContext.Provider>
+        
+        </>
+    )
+
 }
 
-export  { ProductProvider }
+const CartConsumer = ():ProductsStateTypes| ProductProps | undefined => useContext(CartContext);
+
+export { CartProvider,CartConsumer }

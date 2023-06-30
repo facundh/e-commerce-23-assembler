@@ -13,12 +13,12 @@ export type Props = {
     children:ReactNode
 }
 
-export type ProductsStateTypes = {
-    products: ProductProps[],
+export type ProductsStateTypes =  {
+
     handleAddToCart: (id:string) => void
-    handleAddToWish: (id:string) => void
-    handleDeleteProduct: (id:string) => void
-    handleChangeParams:(title:string) => void
+    // handleAddToWish: (id:string) => void
+    // handleDeleteProduct: (id:string) => void
+    // handleChangeParams:(title:string) => void
 
 }
 
@@ -29,11 +29,12 @@ export type ProductProps = {
     description:string;
     quantity:number,
     store:string,
-    price:number
+    price:number,
 }
-export type EventType = FormEvent<HTMLFormElement>
 
-export type ProductActionType = {
-    type:string
-    payload:string | number | boolean 
-}
+
+
+
+
+
+

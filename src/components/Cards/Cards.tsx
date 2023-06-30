@@ -4,55 +4,55 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShareIcon from '@mui/icons-material/Share';
 import Card from '@mui/material/Card';
-import { Link } from 'react-router-dom';
 import { ProductProps } from '../../types/types';
+import { Link } from 'react-router-dom';
+import { CartConsumer } from '../../context/CartProvider';
+
 
 
 
 const Cards = (props: ProductProps) => {
-
+    const {id, title, description, img, store, price} = props;
+   
+ const { handleAddToCart } = CartConsumer()
   return (
-    <Card key={props.id} sx={{ width:450 ,maxWidth: '100%', marginBottom:10, marginTop:10, height:850 }}>
-                    
+    <Card key={id} sx={{  width:'500px', marginBottom:10, marginTop:10, height:'900px' }}>
     <CardActionArea sx={{
         display:"flex",
         flexDirection:"column",
         marginBottom:10
     }}>
-      <CardMedia
+      <Link to={`/products/${store}`}>
+        <CardMedia
         component="img"
-        image={props.img}
-        alt={props.store}
+        image={img}
+        alt={store}
         sx={{height:400, gap:1}}
       />
+      </Link>
       <CardContent sx={{display:"flex", flexDirection:"column"}}>
         <Typography gutterBottom variant="h5" component="div">
-          {props.title}
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold'}}>
-          Description Product: ${props.description}  
+          Description Product: ${description}  
           
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold', mt:2}}>
           
-          Price : ${props.price}
+          Price : ${price}
         </Typography>
       </CardContent>
     </CardActionArea>
-    <CardActions sx={{display:"flex", alignItems:"center", justifyContent:"center", marginTop:0}}>
+    <CardActions sx={{display:"flex", alignItems:"center", justifyContent:"flex-end", marginTop:0}}>
       <Button size="small" color="primary" startIcon={<FavoriteIcon />}  >
             Add Wish List
       </Button>
-      <Button size="small" color="info" startIcon={<ShoppingCartIcon />} >
+      <Button size="small" color="info" startIcon={<ShoppingCartIcon />} onClick={() => handleAddToCart(id)} >
             Add Cart
       </Button>
-      <Link to={`/products/${props.store}`}>
-            <Button size="small" color="success" startIcon={<ShareIcon />}>
-              Details Product
-            </Button>
-      </Link>
+     
     </CardActions>
     
   </Card>

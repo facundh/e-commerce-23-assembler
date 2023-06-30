@@ -10,7 +10,7 @@ export const Wish = () => {
   return (
     <>
     <Container maxWidth="xl" sx={{ display:{xs:'flex'}}}>
-      <ImageList variant="standard" cols={4} gap={7} sx={{mt:3}}>
+      {/* <ImageList variant="standard" cols={4} gap={7} sx={{mt:3}}>
         {
         //   wish.map(({id,title,price,description,brand,img}) => (
         //     <ImageListItem sx={{textAlign:'center', width:300, height:200 ,bgcolor:'lightBlue'}} key={id}>
@@ -33,7 +33,7 @@ export const Wish = () => {
         //     </ImageListItem>
         //   ))
         }
-      </ImageList>
+      </ImageList> */}
     </Container>
     </>
     

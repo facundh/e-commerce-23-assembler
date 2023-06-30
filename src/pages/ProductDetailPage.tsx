@@ -10,28 +10,22 @@ import Typography from '@mui/material/Typography';
 import {  ReactElement } from 'react';
 import { Box } from '@mui/material';
 
-
-
-  
 const ProductDetailPage = ():ReactElement => {
-   
-  
 
     const { productStore } = useParams();
     const {products} = ProductConsumer();
-    
 
     const wineSelected = products.find(product => product.store === productStore);
     const {title, description,  price, img, store} = wineSelected;
-    console.log(wineSelected);
   return (
-    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'100vh'}}>
+    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'400', marginTop:10}}>
 
                 <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
-                sx={{ height: 200 }}
-                
-                
+                component="img"
+                image={img}
+                alt={store}
+                sx={{height:400}}
                 />
                 
                 <CardContent>
