@@ -1,5 +1,5 @@
 
-import getProducts from '../api/getProducts';
+import {productsinStock} from '../api/getProducts';
 import { ProductProps } from '../types/types';
 
 
@@ -9,17 +9,15 @@ const initCartStorage: ProductProps[] = [];
 type CartActionType =
     | {type: "ADD_PRODUCT", payload: ProductProps}
     | {type: "DELETE_PRODUCT", payload: ProductProps}
-    | {type: "UPDATE_PRODUCT", payload: ProductProps}
+    | {type: "ADD_A_PRODUCT", payload: ProductProps}
+    | {type: "DELETE_A_PRODUCT", payload: ProductProps}
 
-const ProductsInStock = async( ):Promise<[]> => {
-    const info = await getProducts()
-    return info
-}
 
-const data = await ProductsInStock();
+const data = productsinStock;
+
 const cartReducer =  (state: typeof initCartStorage, action: CartActionType):void | ProductProps[] => {
    
-   console.log(data);
+    
     switch (action.type) {
         case "ADD_PRODUCT":{
             
@@ -33,11 +31,20 @@ const cartReducer =  (state: typeof initCartStorage, action: CartActionType):voi
         }
         case "DELETE_PRODUCT":
             return state.filter((item:any):boolean => item.id !== action.payload)
-        case "UPDATE_PRODUCT":
+        case "ADD_A_PRODUCT":
             // eslint-disable-next-line no-case-declarations
             const isItemInCart = state.some((item:any) => item.id === action.payload)
             if(isItemInCart){
                 const updateCartItems = state.map((item:any):ProductProps =>  (item.id === action.payload) ? {...item, quantity:item.quantity + 1} : item)
+                return updateCartItems
+            }
+            break;
+        case "DELETE_A_PRODUCT":
+            // eslint-disable-next-line no-case-declarations
+            const isItemInCartDown = state.some((item:any) => item.id === action.payload)
+            if(isItemInCartDown){
+                
+                const updateCartItems = state.map((item:any):ProductProps =>  (item.id === action.payload) ? {...item, quantity:item.quantity - 1} : item)
                 return updateCartItems
             }
             return state;

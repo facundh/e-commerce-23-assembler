@@ -7,18 +7,21 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {  ReactElement } from 'react';
+
 import { Box } from '@mui/material';
 
-const ProductDetailPage = ():ReactElement => {
+const ProductDetailPage = () => {
 
     const { productStore } = useParams();
+
     const {products} = ProductConsumer();
 
-    const wineSelected = products.find(product => product.store === productStore);
+    const wineSelected = productStore ? products.find(product => product.store === productStore) : undefined;
+    
+    if(!productStore) return null
     const {title, description,  price, img, store} = wineSelected;
   return (
-    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'400', marginTop:10}}>
+    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'400', marginTop:20}}>
 
                 <Card sx={{ maxWidth: 345 }}>
                 <CardMedia

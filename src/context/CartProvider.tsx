@@ -1,6 +1,8 @@
 import {FC,  createContext, useContext, useEffect,useState,useReducer} from 'react';
 import { Props, ProductsStateTypes, ProductProps } from '../types/types';
 import { initCartStorage, cartReducer } from './cartActions';
+import { toast } from 'react-hot-toast';
+
 
 
 const CartContext = createContext<ProductsStateTypes | undefined>(undefined);
@@ -12,12 +14,13 @@ const init = () => {
 const CartProvider:FC<Props> = ({children}) => {
     
     const [ cart , dispatch ] = useReducer(cartReducer, initCartStorage, init);
-    const [clicked, setClicked] = useState<boolean>(false)
+    
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     },[cart])
-    
+  
     const handleAddToCart = (id:any) => {
+      
         dispatch({
             type:"ADD_PRODUCT",
             payload:id
@@ -31,14 +34,20 @@ const CartProvider:FC<Props> = ({children}) => {
     }
     const handleUpdateProduct = (id:any) => {
         dispatch({
-            type:"UPDATE_PRODUCT",
+            type:"ADD_A_PRODUCT",
+            payload:id
+        })
+    }
+    const handleDownProduct = (id:any) => {
+        dispatch({
+            type:"DELETE_A_PRODUCT",
             payload:id
         })
     }
 
     return(
         <>
-            <CartContext.Provider value={{handleAddToCart, cart, handleDeleteProduct, handleUpdateProduct, clicked, setClicked}}>
+            <CartContext.Provider value={{handleAddToCart, cart, handleDeleteProduct, handleUpdateProduct,  handleDownProduct}}>
                 {children}
             </CartContext.Provider>
         

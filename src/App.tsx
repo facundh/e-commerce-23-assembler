@@ -1,22 +1,23 @@
-import { CssBaseline } from '@mui/material';
-import { SnackbarProvider } from 'notistack';
+
 import { ProductProvider } from './context/ProductProvider';
 import WebRoutes from './Router/WebRoutes.routes';
 import { CartProvider } from './context/CartProvider';
+import { ThemeConfig } from './config/theme.config';
 
 function App() {
 
 
   return (
     <>  
-        <SnackbarProvider maxSnack={3} autoHideDuration={2000}>
+        
+                <ThemeConfig>
           <ProductProvider>
             <CartProvider>
-                <CssBaseline/>
-                <WebRoutes />
+                  <WebRoutes /> 
             </CartProvider>
           </ProductProvider>
-      </SnackbarProvider>
+                </ThemeConfig>
+     
     </>
   )
 }

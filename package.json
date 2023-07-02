@@ -22,9 +22,9 @@
     "@rewind-ui/core": "^0.9.0",
     "cors": "^2.8.5",
     "json-server": "^0.17.3",
-    "notistack": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-router-dom": "6.12.1",
     "styled-components": "^5.3.11",
     "uuid": "^9.0.0"

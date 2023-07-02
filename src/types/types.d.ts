@@ -17,7 +17,7 @@ export type ProductsStateTypes =  {
 
     handleAddToCart: (id:string) => void
     // handleAddToWish: (id:string) => void
-    // handleDeleteProduct: (id:string) => void
+    handleDeleteProduct: (id:string) => void
     // handleChangeParams:(title:string) => void
 
 }
@@ -30,6 +30,10 @@ export type ProductProps = {
     quantity:number,
     store:string,
     price:number,
+}
+
+export type ThemeProp = {
+    children: ReactNode
 }
 
 

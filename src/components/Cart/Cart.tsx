@@ -6,23 +6,26 @@ import { Button, CardActionArea, CardActions, Container, CardContent, Card, Card
 import { CartConsumer } from '../../context/CartProvider';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { ProductProps } from '../../types/types';
 
 
 
 
 export const Cart:FC = (): ReactElement => {
 
-  const { cart, handleDeleteProduct, handleUpdateProduct} = CartConsumer();
+  const { cart, handleDeleteProduct, handleUpdateProduct, handleDownProduct} = CartConsumer();
 
+ 
+ 
   return (
     <>
-    
+        
          <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bolder', fontSize:30, display:'block',  textAlign:'center', marginTop:1}}>
-            Total Items : {cart.reduce((acc:number, item) => acc + item.quantity , 0)}
+            Total Items : {cart.reduce((acc:number, item:number):number => acc + item.quantity , 0)}
  
         </Typography>
          <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bolder', fontSize:30, display:'block',textAlign:'center'}}>
-         Total Price: {cart.reduce((acc:number, item) => acc + item.price * item.quantity , 0)}
+         Total Price: {cart.reduce((acc:number, item:number):number => acc + item.price * item.quantity , 0)}
         </Typography>
 
         <Container
@@ -65,15 +68,25 @@ export const Cart:FC = (): ReactElement => {
              </Typography>
            </CardContent>
          </CardActionArea>
-         <CardActions sx={{display:'flex', alignItems:'center', justifyContent:'center'}} >
-           <Button size="medium" color="primary" startIcon={<ShoppingCartIcon />}>
+         <CardActions sx={{display:'flex', alignItems:'center', justifyContent:'center', background:'gray', borderRight:'1px solid gray'}} >
+           <Button size="medium" color="success" startIcon={<ShoppingCartIcon />}>
              Buy Now
            </Button>
            <Button size="medium" color="primary" onClick={() => handleUpdateProduct(id)} >
-             Add Product + 1
-             
+           ➕
            </Button>
-           <Button size="medium" color="primary" startIcon={<DeleteIcon />} onClick={() => handleDeleteProduct(id)}>
+           {quantity <= 0 
+           ? <Button size="medium" color="primary" disabled onClick={() => handleDownProduct(id)} >
+             ➖
+             
+            </Button> 
+            : 
+            <Button size="medium" color="primary"  onClick={() => handleDownProduct(id)} >
+             ➖
+            </Button>  
+           }
+           
+           <Button size="medium" color="warning" startIcon={<DeleteIcon />} onClick={() => handleDeleteProduct(id)}>
              Delete Product
            </Button>
          </CardActions>

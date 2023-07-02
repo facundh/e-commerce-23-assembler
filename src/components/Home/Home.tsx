@@ -8,7 +8,7 @@ import Cards from '../Cards/Cards';
 import { Container, InputAdornment, TextField } from '@mui/material';
 
 
-export const Home:FC<ProductsStateTypes> = () => {
+export const Home:FC<ProductProps> = () => {
     
     const { products } = ProductConsumer();
   
@@ -17,14 +17,14 @@ export const Home:FC<ProductsStateTypes> = () => {
     const query = searchParams.get('q') || '';
     
 
-    const handleChangeParams = ({target}) => {
+    const handleChangeParams = ({target}: React.ChangeEvent<HTMLInputElement>) => {
         setSearchParams({q:target.value})
     }
 
   return (
     <>
 
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <TextField
                         hiddenLabel
                         id="filled-hidden-label-normal"
