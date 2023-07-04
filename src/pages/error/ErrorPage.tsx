@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
 // type Props = {}
 
-const ErrorPage = () => {
+export const ErrorPage = () => {
   return (
     <Stack sx={{ width: '100%', textAlign:"center", display:"flex", alignItems:"center", justifyContent:"center", height:"100vh" ,padding:40}} spacing={2}>
             <Alert severity="error" sx={{padding:20}}>
@@ -19,4 +19,3 @@ const ErrorPage = () => {
   )
 }
 
-export default ErrorPage

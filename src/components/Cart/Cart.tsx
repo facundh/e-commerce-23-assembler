@@ -7,6 +7,7 @@ import { CartConsumer } from '../../context/CartProvider';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { ProductProps } from '../../types/types';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -15,8 +16,13 @@ export const Cart:FC = (): ReactElement => {
 
   const { cart, handleDeleteProduct, handleUpdateProduct, handleDownProduct} = CartConsumer();
 
- 
- 
+  const navigate = useNavigate();
+
+  const onCheckout = () => {
+    navigate('/checkout', {
+      replace:true
+  })
+  }
   return (
     <>
         
@@ -44,20 +50,21 @@ export const Cart:FC = (): ReactElement => {
        cart.map(({id, title, price, description, img, quantity}:ProductProps):ReactElement => (
          <>
 
-         <Card key={id} sx={{  width:'500px', marginBottom:10, marginTop:10, height:'100%' }}>
+         <Card key={id} sx={{  width:'700px', marginBottom:10, marginTop:10, height:'100%' }}>
          <CardActionArea sx={{
             display:"flex",
-            flexDirection:"column",
+            
             marginBottom:10,
+            width:'700px'
          }}>
-          <Typography variant='subtitle2' sx={{fontSize:'25px', display:'flex', alignSelf:'flex-end',  borderRadius:'50%', fontWeight:'bold',padding:'5px'  }}>
+          <Typography variant='subtitle2' sx={{fontSize:'25px', display:'block', margin:'20px' }}>
             {quantity}
           </Typography>
            <CardMedia
              component="img"
              image={img}
              alt={title}
-             
+             sx={{width:'100px'}}
            />
            <CardContent >
              <Typography gutterBottom variant="h5" component="div">
@@ -69,7 +76,7 @@ export const Cart:FC = (): ReactElement => {
            </CardContent>
          </CardActionArea>
          <CardActions sx={{display:'flex', alignItems:'center', justifyContent:'center', background:'gray', borderRight:'1px solid gray'}} >
-           <Button size="medium" color="success" startIcon={<ShoppingCartIcon />}>
+           <Button size="medium" color="success" startIcon={<ShoppingCartIcon /> } onClick={onCheckout}>
              Buy Now
            </Button>
            <Button size="medium" color="primary" onClick={() => handleUpdateProduct(id)} >

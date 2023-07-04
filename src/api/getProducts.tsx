@@ -6,6 +6,6 @@ export const getProducts = async():Promise<[]> => {
 }
 
 export const productsinStock = await getProducts();
-console.log(productsinStock);
+
 
 

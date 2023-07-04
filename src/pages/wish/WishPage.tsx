@@ -1,4 +1,4 @@
-import {  Wish } from "../components"
+import {  Wish } from "../../components"
 
 
 

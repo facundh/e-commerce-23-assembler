@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { ProductConsumer } from '../context/ProductProvider';
+import { ProductConsumer } from '../../context/ProductProvider';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -9,26 +9,28 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { Box } from '@mui/material';
+import { ProductProps } from '../../types/types';
 
-const ProductDetailPage = () => {
+export const ProductDetailPage = () => {
 
     const { productStore } = useParams();
 
-    const {products} = ProductConsumer();
+    const {products} = ProductConsumer() ;
 
     const wineSelected = productStore ? products.find(product => product.store === productStore) : undefined;
-    
+
     if(!productStore) return null
+
     const {title, description,  price, img, store} = wineSelected;
   return (
-    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'400', marginTop:20}}>
+    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'400', marginTop:'20px', width:'100%'}}>
 
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ width:'500px', padding:2 }}>
                 <CardMedia
                 component="img"
                 image={img}
                 alt={store}
-                sx={{height:400}}
+                sx={{height:'300px', width:'300px', margin:'0 auto'}}
                 />
                 
                 <CardContent>
@@ -51,4 +53,3 @@ const ProductDetailPage = () => {
   )
 }
 
-export default ProductDetailPage

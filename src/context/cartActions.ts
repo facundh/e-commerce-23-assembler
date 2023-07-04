@@ -2,16 +2,13 @@
 import {productsinStock} from '../api/getProducts';
 import { ProductProps } from '../types/types';
 
-
 const initCartStorage: ProductProps[] = [];
-
 
 type CartActionType =
     | {type: "ADD_PRODUCT", payload: ProductProps}
     | {type: "DELETE_PRODUCT", payload: ProductProps}
     | {type: "ADD_A_PRODUCT", payload: ProductProps}
     | {type: "DELETE_A_PRODUCT", payload: ProductProps}
-
 
 const data = productsinStock;
 
@@ -20,7 +17,6 @@ const cartReducer =  (state: typeof initCartStorage, action: CartActionType):voi
     
     switch (action.type) {
         case "ADD_PRODUCT":{
-            
             const newProduct:ProductProps = data.find(item => item.id === action.payload)
             const isInCart = state.some((item:any):boolean => item.id === action.payload)
             let updateItem;

@@ -2,14 +2,16 @@ import { ReactElement } from 'react';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 
 
-import { Navbar } from '../components';
-import { HomePage } from '../pages/HomePage';
+import {  Navbar } from '../components';
+import { HomePage, ResumePage } from '../pages/index.ts';
 
-import { WishPage } from '../pages/WishPage';
-import { ResumePage } from '../pages/ResumePage';
-import ErrorPage from '../pages/ErrorPage';
-import ProductDetailPage from '../pages/ProductDetailPage';
-import LandingPage from '../pages/LandingPage';
+import { WishPage } from '../pages/wish/WishPage';
+import {ErrorPage} from '../pages/error/ErrorPage.tsx';
+import {ProductDetailPage} from '../pages/productDetails/ProductDetailPage';
+import {LandingPage} from '../pages/landing/LandingPage';
+import { AuthConsumer } from '../context/AuthProvider';
+import { ProtectedRoute } from '../utils/ProtectedRoute';
+import { CheckoutPage } from '../pages/checkout/CheckoutPage';
 
 
 
@@ -19,6 +21,7 @@ import LandingPage from '../pages/LandingPage';
 
 
 const WebRoutes = ():ReactElement => {
+  const {user} = AuthConsumer()
   return (
     <>
    
@@ -27,10 +30,15 @@ const WebRoutes = ():ReactElement => {
      
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path='/products' element={<HomePage />}/>
-          <Route path='/products/:productStore' element={<ProductDetailPage />}/>
+          <Route path='/products' element={<HomePage  />}/>
+          <Route path='/products/:productStore' 
+          element={
+              <ProtectedRoute user={user}>
+                <ProductDetailPage /> 
+              </ProtectedRoute>}/>
           <Route path='/wish' element={<WishPage />}/>
           <Route path='/cart' element={<ResumePage />}/>
+          <Route path='/checkout' element={<CheckoutPage />}/>
           <Route path='*' element={<ErrorPage />}/>
         </Routes>
         </BrowserRouter>

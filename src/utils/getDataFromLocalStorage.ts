@@ -1,4 +1,4 @@
-export const getProductsFromLocalStorageCart = ():any => {
+export const initCart = ():any => {
     const productsInLocalStorageCart = localStorage.getItem('cart');
     if(productsInLocalStorageCart){
         try {
@@ -21,3 +21,4 @@ export const getProductsFromLocalStorageWish = ():any => {
     }
     return []
 } 
+

@@ -1,29 +1,28 @@
 import { FC,  ReactElement } from 'react'
-import {  ProductProps, ProductsStateTypes } from '../../types/types';
+import { useSearchParams } from 'react-router-dom';
 import { ProductConsumer } from '../../context/ProductProvider';
-import {   useSearchParams } from 'react-router-dom';
+import {  ProductProps } from '../../types/types';
+import Cards from '../Cards/Cards';
+
 import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@material-ui/core';
-import Cards from '../Cards/Cards';
 import { Container, InputAdornment, TextField } from '@mui/material';
 
 
+
 export const Home:FC<ProductProps> = () => {
-    
+
     const { products } = ProductConsumer();
-  
+
     const [searchParams, setSearchParams] = useSearchParams();
-    
+
     const query = searchParams.get('q') || '';
-    
 
     const handleChangeParams = ({target}: React.ChangeEvent<HTMLInputElement>) => {
         setSearchParams({q:target.value})
     }
-
   return (
     <>
-
     <Container maxWidth="xl">
       <TextField
                         hiddenLabel
@@ -42,10 +41,9 @@ export const Home:FC<ProductProps> = () => {
                         value={query}
                         name='filter'
                         type='text'
-                       />
+                      />
       <Box sx={{display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'space-around'}}>
 
-              
               {products && products
                   .filter(({title}) => {
                     if(!query) return true
@@ -56,13 +54,10 @@ export const Home:FC<ProductProps> = () => {
                   })
 
               .map((props:ProductProps):ReactElement => (
-
-                <Cards {...props} />
-                
+                  <Cards {...props} />
               ))
-
 }
-      </Box> 
+      </Box>
       </Container>
   </>
 

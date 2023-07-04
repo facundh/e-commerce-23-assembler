@@ -17,23 +17,24 @@ const Cards = (props: ProductProps) => {
    
  const {handleAddToCart }:ProductsStateTypes = CartConsumer()
   return (
-    <Card key={id} sx={{ width:450 ,maxWidth:'100%', marginBottom:10, marginTop:10, height:850,paddingTop:1 }}>
+    <Card key={id} sx={{ width:'450px', maxHeight:'900px' ,maxWidth:'100%', marginBottom:10, marginTop:10, height:850,paddingTop:1, }}>
                     
     <CardActionArea sx={{
         display:"flex",
         flexDirection:"column",
-        marginBottom:10
+        marginBottom:10,
+        height:'600px'
     }}>
       <Link to={`/products/${store}`}>
         <CardMedia
         component="img"
         image={img}
         alt={store}
-        sx={{height:400, gap:1}}
+        sx={{height:'200px', gap:1, width:'200px'}}
       />
       </Link>
-      <CardContent sx={{display:"flex", flexDirection:"column"}}>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{display:"flex", flexDirection:"column", alignItems:'center', justifyContent:'center', width:'400px', fontSize:'15px'}}>
+        <Typography gutterBottom variant="h6" component="div">
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bold'}}>
