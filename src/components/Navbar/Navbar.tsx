@@ -1,5 +1,5 @@
 import { ReactElement, useState, FC } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { NavListDrawer } from "./NavListDrawer";
 import { Button, Drawer, AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -15,16 +15,12 @@ import { AuthConsumer } from '../../context/AuthProvider';
 
 
 
+
 const navLinks = [
   {
       title:'Home',
       path:"/products",
       icon:<HomeIcon />
-  },
-  {
-      title:'Wish',
-      path:"/Wish",
-      icon:<StarIcon />
   },
   {
       title:'Cart',
@@ -35,6 +31,8 @@ const navLinks = [
 
 export const Navbar:FC<UserState> = ():ReactElement => {
   const { user, login, logout } = AuthConsumer();
+  
+
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -44,6 +42,10 @@ export const Navbar:FC<UserState> = ():ReactElement => {
 
   const onLogout = () => {
     logout();
+    // navigate('/products', {
+    //   replace:true
+    // })
+    
   }
 
   const handleOpen = ():void =>  {

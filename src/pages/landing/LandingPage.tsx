@@ -1,5 +1,6 @@
+import Landing from "../../components/Landing/Landing"
 
-import Landing from '../../components/Landing/Landing'
+
 
 
 

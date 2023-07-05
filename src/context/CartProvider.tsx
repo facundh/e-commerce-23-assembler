@@ -1,4 +1,4 @@
-import {FC,  createContext, useContext, useEffect,useState,useReducer} from 'react';
+import {FC,  createContext, useContext, useEffect,useReducer} from 'react';
 import { Props, ProductsStateTypes, ProductProps } from '../types/types';
 import { initCartStorage, cartReducer } from './cartActions';
 import { initCart } from '../utils/getDataFromLocalStorage';

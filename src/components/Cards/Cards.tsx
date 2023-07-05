@@ -1,24 +1,25 @@
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Card from '@mui/material/Card';
 import { ProductProps, ProductsStateTypes } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { CartConsumer } from '../../context/CartProvider';
 
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Card from '@mui/material/Card';
 
 
 
-const Cards = (props: ProductProps) => {
+
+export const Cards = (props: ProductProps ) => {
     const {id, title, description, img, store, price} = props;
    
- const {handleAddToCart }:ProductsStateTypes = CartConsumer()
+ const { handleAddToCart  }:ProductsStateTypes  = CartConsumer();
   return (
-    <Card key={id} sx={{ width:'450px', maxHeight:'900px' ,maxWidth:'100%', marginBottom:10, marginTop:10, height:850,paddingTop:1, }}>
-                    
+    <Card key={id} sx={{ width:'450px', maxHeight:'750px' ,maxWidth:'100%', marginBottom:10, marginTop:10, height:850,paddingTop:1, }}>
+
     <CardActionArea sx={{
         display:"flex",
         flexDirection:"column",
@@ -47,10 +48,8 @@ const Cards = (props: ProductProps) => {
         </Typography>
       </CardContent>
     </CardActionArea>
-    <CardActions sx={{display:"flex", alignItems:"center", justifyContent:"center", marginTop:0}}>
-      <Button size="small" color="primary" startIcon={<FavoriteIcon />}  >
-            Add Wish List
-      </Button>
+    <CardActions sx={{display:"flex", alignItems:"center", justifyContent:"center", marginTop:0, padding:0}}>
+
       <Button size="small"  startIcon={<ShoppingCartIcon />} onClick={() => handleAddToCart(id)} >
             Add Cart
       </Button>
@@ -61,4 +60,3 @@ const Cards = (props: ProductProps) => {
   )
 }
 
-export default Cards

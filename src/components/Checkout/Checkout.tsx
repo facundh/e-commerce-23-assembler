@@ -1,6 +1,9 @@
-import {Box, Paper, Typography} from '@mui/material';
+import {Box, Paper, Typography, Button} from '@mui/material';
 import { CartConsumer } from '../../context/CartProvider';
 import { AuthConsumer } from '../../context/AuthProvider';
+import { ProductProps } from '../../types/types';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -8,22 +11,26 @@ export const Checkout = () => {
     const { cart } = CartConsumer();
     const {user} = AuthConsumer()
 
-  let total = cart.reduce((acc:number, item:number):number => acc + item.price * item.quantity , 0)
-  console.log(total);
-  user ? total = total / 2 : total
+ 
 
   return (
     <>
-            <Typography variant={'h3'} sx={{textAlign:'center', mb:2}}>Thanks for your Purcharse</Typography>
-            <Box sx={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-                <Typography variant='h5'> Total due: {total}</Typography>
+          
+            <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
+                {/* <Typography variant='h5'> Total due: U$S {total}</Typography> */}
+                <Link to='/form'><Button variant='contained' sx={{mt:2}}>Buy now</Button></Link>
             </Box>
-            {cart.map(({img, title, price, quantity}) => 
-            <Paper sx={{padding: 4, width:'90vw', margin:'0 auto', display:'flex', justifyContent:'space-around', alignItems:'center', mt:2, mb:1.5}}>
-                <img style={{width:'100px'}} src={img} />  <span style={{fontWeight:'bold'}}>Product: {title}</span>  <span>Price:U$S {price}</span>  <span>Quantity:{quantity}</span>     
-            </Paper>)}
+            {cart.map(({img, title, price, quantity}:ProductProps) => 
+                
+                    <Paper elevation={1} sx={{padding: 4, width:'50vw', margin:'0 auto', display:{xs:'flex', md:'flex', lg:'flex', flexDirection:'column'}, justifyContent:'space-around', alignItems:'center',flexWrap:'no-wrap', mt:2, mb:1.5}}>
+                        <img style={{width:'100px'}} src={img} />  <span style={{fontWeight:'bold'}}>Product: {title}</span>  <span>Price:U$S {price}</span>  <span>Quantity:{quantity}</span>     
+                    </Paper>
+              
+                )
+            
+            }
 
-
+            
 
         
     </>

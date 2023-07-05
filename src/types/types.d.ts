@@ -1,13 +1,6 @@
-import { MouseEvent, ReactNode } from 'react';
+import {  ReactNode } from 'react';
 
-export type ButtonAction = {
-	initialValue?: number;
-	label: string;
-	action: (event: MouseEvent<HTMLButtonElement>) => void;
-	id: string;
-	display: string;
-	quantity:number,
-};
+
 
 export type Props = {
     children:ReactNode
@@ -15,20 +8,21 @@ export type Props = {
 
 export type ProductsStateTypes =  {
     cart:[] = []
-    handleAddToCart: (id:string) => void
-    handleDeleteProduct: (id:string) => void
-    handleUpdateProduct: (id:string) => void,  
-    handleDownProduct:(id:string) => void
+    handleAddToCart?: (id:string) => void
+    handleDeleteProduct?: (id:string) => void
+    handleUpdateProduct?: (id:string) => void,  
+    handleDownProduct?:(id:string) => void
 }
 
 export type ProductProps = {
-    id:string | undefined;
-    title:string | undefined;
-    img:string | undefined;
-    description:string | undefined;
-    quantity:number | undefined,
-    store:string | undefined,
-    price:number | undefined,
+    id?:string | undefined;
+    title?:string;
+    img?:string | undefined;
+    description?:string | undefined;
+    quantity?:number | undefined,
+    store?:string | undefined,
+    price?:number | undefined,
+    newProduct: string | undefined
 }
 
 export type ThemeProp = {
@@ -36,11 +30,11 @@ export type ThemeProp = {
 }
 
 export type UserProps = {
-    name:string | undefined,
-    id: number | undefined,
+    name?:string | undefined,
+    id?: number | undefined,
     login:() => void,
     logout: () => void
-    children : ReactNode
+    children: ReactNode
 }
 
 

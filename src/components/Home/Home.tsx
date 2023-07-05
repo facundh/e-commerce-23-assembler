@@ -2,7 +2,7 @@ import { FC,  ReactElement } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { ProductConsumer } from '../../context/ProductProvider';
 import {  ProductProps } from '../../types/types';
-import Cards from '../Cards/Cards';
+import {Cards} from '../Cards/Cards';
 
 import SearchIcon from '@mui/icons-material/Search';
 import { Box } from '@material-ui/core';
@@ -23,12 +23,12 @@ export const Home:FC<ProductProps> = () => {
     }
   return (
     <>
-    <Container maxWidth="xl">
-      <TextField
+    <Container fixed maxWidth="xl" sx={{display:{sm:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', md:'flex'}}}>
+                   <TextField
                         hiddenLabel
                         id="filled-hidden-label-normal"
                         variant="filled"
-                        sx={{marginLeft:30, width:'60%',marginTop:10, alignSelf:'center', xs:'width: 100%'}}
+                        sx={{width:{xs:'430px', sm:'500px', md:'600px', lg:'80vw', xl:500},marginTop:{xs:'20px', sm:'30px', md:'40px', lg:'50px', xl:'50px'}}}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
