@@ -7,7 +7,7 @@ const ProductContext = createContext<ProductsItemProps>( {} as ProductsItemProps
 
 export const ProductProvider: FC<ProductsItemProps> = ({children}) => {
 
-    const [products, setProducts] = useState<ProductProps[]>([]);
+    const [products, setProducts] = useState<ProductsItemProps[]>([]);
     
     
     useEffect(() => {
@@ -41,7 +41,7 @@ export const ProductProvider: FC<ProductsItemProps> = ({children}) => {
 export const useProducts = () => {
     const productContext = useContext(ProductContext);
     if(!productContext){
-        throw new Error('You are not inside de Provder')
+        throw new Error('productContext has to be used within ProductContext')
     }
 
     return productContext

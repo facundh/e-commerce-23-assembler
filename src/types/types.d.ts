@@ -1,11 +1,15 @@
 
+export type Props = {
+    children: JSX.Element
+}
+
 export type ProductsStateTypes =  {
-    cart:object[] = []
+    cart:[] = []
     handleAddToCart?: (id:string) => void
     handleDeleteProduct?: (id:string) => void
     handleUpdateProduct?: (id:string) => void  
     handleDownProduct?:(id:string) => void
-    children: JSX.Element
+    children: Props
 }
 
 export type ProductProps = {
@@ -20,7 +24,7 @@ export type ProductProps = {
 }
 
 export type ProductsItemProps = {
-    data: ProductProps;
+    products: ProductProps;
     setProducts: React.Dispatch<React.SetStateAction<products>>
     children: JSX.Element
 }
@@ -31,16 +35,10 @@ export type ThemeProp = {
 
 
 export type UserProps = {
-    
-
         name:string
         id: number 
         login:(name:string) => void
         logout: () => void
         children: JSX.Element
-}
-
-export type User = {
-    data: UserProps
 }
 

@@ -1,9 +1,10 @@
 import {FC,  createContext, useContext, useEffect,useReducer} from 'react';
-import {  ProductsStateTypes} from '../types/types';
+import { ProductsStateTypes, ProductProps } from '../types/types';
 import { initCartStorage, cartReducer } from './cartActions';
 import { initCart } from '../utils/getDataFromLocalStorage';
 
-const CartContext = createContext<ProductsStateTypes | undefined >( {} as ProductsStateTypes);
+const CartContext = createContext<ProductsStateTypes>( {} as ProductsStateTypes);
+
 
 
 export const CartProvider:FC<ProductsStateTypes> = ({children}) => {

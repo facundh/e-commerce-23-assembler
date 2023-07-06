@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 // type Props = {}
 
-const Landing = () => {
+export const Landing = () => {
   return (
     <>
     <Container className='layout_container' maxWidth='xl'  >
@@ -22,4 +22,3 @@ const Landing = () => {
   )
 }
 
-export default Landing

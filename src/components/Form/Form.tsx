@@ -1,15 +1,17 @@
-import { Button, Typography, Box} from "@mui/material"
-
 import { useDataUser } from "../../context/AuthProvider"
 import { Link } from "react-router-dom";
 import {  useCart } from "../../context/CartProvider";
+import { Button, Typography, Box} from "@mui/material"
+
 
 
 export const Form = () => {
   const { cart } = useCart();
   const {user, logout} = useDataUser();
 
-
+const clearLocalStorage = () => {
+  localStorage.removeItem('cart');
+}
 let total = cart.reduce((acc:number, {price, quantity}):number => acc + price * quantity , 0)
 console.log(total);
 user ? total = total / 2 : total
@@ -23,7 +25,7 @@ user ? total = total / 2 : total
             <Typography sx={{textAlign:'center', mt:2, mb:2}}>{user && user ? 'You will receive your order tomorrow' : 'You will receive your order in ten days'}</Typography>
             <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
                 <Typography variant='h5'> Total due: U$S {total}</Typography>
-                <Link to='/'><Button variant='contained' onClick={logout} sx={{mt:2}}>Go to Main</Button></Link>
+                <Link to='/'><Button variant='contained' onClick={clearLocalStorage} sx={{mt:2}}>Go to Main</Button></Link>
             </Box>
     </>
     

@@ -26,7 +26,6 @@ export const AuthProvider:FC<UserProps> = ({children}) => {
 
     const logout = () => {
       localStorage.removeItem('user');
-      localStorage.removeItem('cart');
       dispatch({
         type: REDUCER_ACTION_TYPE.LOGOUT
       })

@@ -16,7 +16,11 @@ const WebRoutes = ():ReactElement => {
   return (
     <>
       <BrowserRouter>
-       <Navbar />
+       <Navbar name={''} id={0} login={function (name: string): void {
+          throw new Error('Function not implemented.');
+        } } logout={function (): void {
+          throw new Error('Function not implemented.');
+        } } children={undefined} />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path='/products' element={<HomePage cart={[]} handleAddToCart={function (id: string): void {
