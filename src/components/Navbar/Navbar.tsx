@@ -15,7 +15,6 @@ import { useDataUser } from '../../context/AuthProvider';
 
 
 
-
 const navLinks = [
   {
       title:'Home',
@@ -31,19 +30,16 @@ const navLinks = [
 
 export const Navbar:FC<UserProps> = ():ReactElement => {
   const { user, login, logout } = useDataUser();
-  
-
 
   const [open, setOpen] = useState<boolean>(false);
 
   const onLogin = () => {
-    login('Facundo')
+    login('Pepe')
   }
 
   const onLogout = () => {
     logout();
 
-    
   }
 
   const handleOpen = ():void =>  {

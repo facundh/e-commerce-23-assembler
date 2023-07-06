@@ -9,16 +9,19 @@ export type ProductsStateTypes =  {
 }
 
 export type ProductProps = {
-    products: Array<ProductProps> = []
-        id:string 
-        title:string
-        img:string 
-        description:string
-        quantity:number
-        store:string
-        price:number
-        children: JSX.Element
-    
+    id:string 
+    title:string
+    img:string 
+    description:string
+    quantity:number
+    store:string
+    price:number
+    children: JSX.Element
+}
+export type ProductsItemProps = {
+    data: ProductProps;
+    setProducts: React.Dispatch<React.SetStateAction<products>>
+    children: JSX.Element
 }
 
 export type ThemeProp = {
@@ -27,13 +30,17 @@ export type ThemeProp = {
 
 
 export type UserProps = {
-    user: {
+    
 
         name?:string
         id?: number 
-    }
-    login:() => void,
-    logout: () => void
+    
+        login:(name:string) => void,
+        logout: () => void
     children: JSX.Element
+}
+
+export type User = {
+    data: UserProps
 }
 

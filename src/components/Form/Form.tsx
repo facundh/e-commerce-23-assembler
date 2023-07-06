@@ -7,9 +7,10 @@ import {  useCart } from "../../context/CartProvider";
 
 export const Form = () => {
   const { cart } = useCart();
-  const {user} = useDataUser()
+  const {user} = useDataUser();
 
-let total = cart.reduce((acc:number, item:number):number => acc + item.price * item.quantity , 0)
+
+let total = cart.reduce((acc:number, {price, quantity}):number => acc + price * quantity , 0)
 console.log(total);
 user ? total = total / 2 : total
 

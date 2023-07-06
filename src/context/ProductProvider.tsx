@@ -1,13 +1,13 @@
 import {FC,  createContext, useContext, useEffect,useState} from 'react';
-import {   ProductProps } from '../types/types';
-import { getProducts } from '../api/getProducts';
-
-const ProductContext = createContext<ProductProps>({} as ProductProps);
+import {   ProductProps, ProductsItemProps } from '../types/types';
 
 
-export const ProductProvider: FC<ProductProps> = ({children}) => {
+const ProductContext = createContext<ProductsItemProps>( {} as ProductsItemProps);
 
-    const [products, setProducts] = useState<ProductProps>();
+
+export const ProductProvider: FC<ProductsItemProps> = ({children}) => {
+
+    const [products, setProducts] = useState<ProductProps[]>([]);
     
     
     useEffect(() => {
@@ -21,7 +21,7 @@ export const ProductProvider: FC<ProductProps> = ({children}) => {
             }
         }
         getProducts();
-    },[])
+    },[setProducts])
     
 
    

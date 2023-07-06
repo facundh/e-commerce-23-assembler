@@ -6,7 +6,7 @@ export const types = {
 }
 
 export const enum REDUCER_ACTION_TYPE {
-    LOGING, 
+    LOGIN, 
     LOGOUT
 }
 
@@ -17,16 +17,14 @@ export const enum REDUCER_ACTION_TYPE {
 
 export const authReducer = (state:UserProps, action:reducerAction)=> {
   switch (action.type) {
-    case REDUCER_ACTION_TYPE.LOGING:
+    case REDUCER_ACTION_TYPE.LOGIN:
         return {
             ...state,
-            isLogged:true,
             user:action.payload
         }
        case REDUCER_ACTION_TYPE.LOGOUT:
         return {
             id: '',
-            isLogged:false,
             name: ''
         }
 

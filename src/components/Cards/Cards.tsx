@@ -50,7 +50,7 @@ export const Cards = (props: ProductProps ) => {
     </CardActionArea>
     <CardActions sx={{display:"flex", alignItems:"center", justifyContent:"center", marginTop:0, padding:0}}>
 
-      <Button size="small"  startIcon={<ShoppingCartIcon />} onClick={() => handleAddToCart(id)} >
+      <Button size="small"  startIcon={<ShoppingCartIcon />} onClick={() => handleAddToCart?.(id)} >
             Add Cart
       </Button>
      

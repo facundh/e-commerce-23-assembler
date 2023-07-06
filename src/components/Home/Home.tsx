@@ -1,7 +1,7 @@
 import { FC,  ReactElement } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import {  useProducts } from '../../context/ProductProvider';
-import {  ProductProps } from '../../types/types';
+import { ProductsItemProps, ProductProps } from '../../types/types';
 import {Cards} from '../Cards/Cards';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,9 +10,10 @@ import { Container, InputAdornment, TextField } from '@mui/material';
 
 
 
-export const Home:FC<ProductProps> = () => {
+export const Home:FC<ProductsItemProps> = () => {
 
     const { products } = useProducts();
+    const {title} = products;
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -45,6 +46,7 @@ export const Home:FC<ProductProps> = () => {
       <Box sx={{display:'flex', flexWrap:'wrap', alignItems:'center', justifyContent:'space-around'}}>
 
               {products && products
+              
                   .filter(({title}) => {
                     if(!query) return true
                     if(query) {

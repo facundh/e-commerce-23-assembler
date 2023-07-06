@@ -18,11 +18,11 @@ export const Cart:FC = (): ReactElement => {
   const { cart, handleDeleteProduct, handleUpdateProduct, handleDownProduct} = useCart();
 
   const navigate = useNavigate();
-  let total = cart.reduce((acc:number, item:number):number => acc + item.price * item.quantity , 0)
+  let total = cart.reduce((acc:number, {price, quantity}):number => acc + price * quantity , 0)
   console.log(total);
   user ? total = total / 2 : total
 
-  let totalItems = cart.reduce((acc:number, item:number):number => acc + item.quantity , 0)
+  const totalItems = cart.reduce((acc:number, {quantity}):number => acc + quantity , 0)
   const onCheckout = () => {
     navigate('/checkout', {
       replace:true
@@ -96,21 +96,21 @@ export const Cart:FC = (): ReactElement => {
          </CardActionArea>
          <CardActions sx={{display:'flex', alignItems:'center', justifyContent:'center', background:'gray', borderRight:'1px solid gray'}} >
           
-           <Button size="medium" color="primary" onClick={() => handleUpdateProduct(id)} >
+           <Button size="medium" color="primary" onClick={() => handleUpdateProduct?.(id)} >
            ➕
            </Button>
            {quantity <= 0 
-           ? <Button size="medium" color="primary" disabled onClick={() => handleDownProduct(id)} >
+           ? <Button size="medium" color="primary" disabled onClick={() => handleDownProduct?.(id)} >
              ➖
              
             </Button> 
             : 
-            <Button size="medium" color="primary"  onClick={() => handleDownProduct(id)} >
+            <Button size="medium" color="primary"  onClick={() => handleDownProduct?.(id)} >
              ➖
             </Button>  
            }
             
-           <Button size="medium" color="warning" startIcon={<DeleteIcon />} onClick={() => handleDeleteProduct(id)}>
+           <Button size="medium" color="warning" startIcon={<DeleteIcon />} onClick={() => handleDeleteProduct?.(id)}>
              Delete Product
            </Button>
          </CardActions>

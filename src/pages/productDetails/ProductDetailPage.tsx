@@ -10,11 +10,13 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 
 
+
 export const ProductDetailPage = () => {
 
     const { productStore } = useParams();
 
     const {products} = useProducts() ;
+    
 
     const wineSelected = productStore ? products.find(product => product.store === productStore) : undefined;
 

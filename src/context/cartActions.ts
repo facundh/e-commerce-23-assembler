@@ -5,10 +5,10 @@ import { ProductProps } from '../types/types';
 const initCartStorage: ProductProps[] | [] = [];
 
 type CartActionType =
-    | {type: "ADD_PRODUCT", payload: ProductProps}
-    | {type: "DELETE_PRODUCT", payload: ProductProps}
-    | {type: "ADD_A_PRODUCT", payload: ProductProps}
-    | {type: "DELETE_A_PRODUCT", payload: ProductProps}
+    | {type: "ADD_PRODUCT", payload: ProductProps | undefined}
+    | {type: "DELETE_PRODUCT", payload: ProductProps | undefined}
+    | {type: "ADD_A_PRODUCT", payload: ProductProps | undefined}
+    | {type: "DELETE_A_PRODUCT", payload: ProductProps | undefined}
 
 const data = productsinStock;
 
