@@ -1,15 +1,15 @@
-import {FC,  createContext, useContext, useEffect,useState,useReducer} from 'react';
-import { Props, ProductsStateTypes, ProductProps } from '../types/types';
+import {FC,  createContext, useContext, useEffect,useState} from 'react';
+import {   ProductProps } from '../types/types';
+import { getProducts } from '../api/getProducts';
+
+const ProductContext = createContext<ProductProps>({} as ProductProps);
 
 
-const ProductContext = createContext<ProductsStateTypes | undefined>(undefined);
+export const ProductProvider: FC<ProductProps> = ({children}) => {
 
-
-const ProductProvider: FC<Props> = ({children}) => {
-
-    const [products, setProducts] = useState<[]>([]) || undefined;
+    const [products, setProducts] = useState<ProductProps>();
     
-
+    
     useEffect(() => {
         const getProducts = async():Promise<void> => {
             try {
@@ -22,19 +22,28 @@ const ProductProvider: FC<Props> = ({children}) => {
         }
         getProducts();
     },[])
+    
+
+   
 
 
    
 
   return (
     <>
-        <ProductContext.Provider value={{products}}>
+        <ProductContext.Provider value={{products, setProducts}}>
                 {children}
         </ProductContext.Provider>
     </>
   )
 }
 
-const ProductConsumer = ():ProductsStateTypes| ProductProps | undefined => useContext(ProductContext);
+export const useProducts = () => {
+    const productContext = useContext(ProductContext);
+    if(!productContext){
+        throw new Error('You are not inside de Provder')
+    }
 
-export  { ProductProvider, ProductConsumer }
+    return productContext
+}
+

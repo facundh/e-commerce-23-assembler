@@ -3,10 +3,10 @@ import { Props, ProductsStateTypes, ProductProps } from '../types/types';
 import { initCartStorage, cartReducer } from './cartActions';
 import { initCart } from '../utils/getDataFromLocalStorage';
 
-const CartContext = createContext<ProductsStateTypes | undefined >(undefined);
+const CartContext = createContext<ProductsStateTypes | undefined >( {} as ProductsStateTypes);
 
 
-const CartProvider:FC<Props> = ({children}) => {
+export const CartProvider:FC<Props> = ({children}) => {
     
     const [ cart , dispatch ] = useReducer(cartReducer, initCartStorage, initCart);
     
@@ -14,8 +14,7 @@ const CartProvider:FC<Props> = ({children}) => {
         localStorage.setItem('cart', JSON.stringify(cart))
     },[cart])
   
-    const handleAddToCart = (id:any) => {
-      
+    const handleAddToCart= (id:string):void => {
         dispatch({
             type:"ADD_PRODUCT",
             payload:id
@@ -51,6 +50,11 @@ const CartProvider:FC<Props> = ({children}) => {
 
 }
 
-const CartConsumer = ():ProductsStateTypes| ProductProps | undefined => useContext(CartContext);
+export const useCart = () => {
+    const cartContext = useContext(CartContext);
+    if(!cartContext){
+        throw new Error('useCart must be inside the provider')
+    }
+    return cartContext
+}
 
-export { CartProvider,CartConsumer }

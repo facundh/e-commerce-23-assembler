@@ -1,11 +1,11 @@
 import { createContext, FC, useContext, useReducer } from 'react';
 import { UserProps } from '../types/types';
-import { authReducer, types } from './authReducer';
+import { authReducer, REDUCER_ACTION_TYPE } from './authReducer';
 
-export const AuthContext = createContext<UserProps | undefined>(undefined);
+export const AuthContext = createContext<UserProps>({} as UserProps);
 
 const init = () => {
-  const user =  JSON.parse(localStorage.getItem("user") as string) 
+  const user =  JSON.parse(localStorage.getItem("user") as string)
   return {
     isLogged: !!user,
     user
@@ -14,20 +14,20 @@ const init = () => {
 
 export const AuthProvider:FC<UserProps> = ({children}) => {
 
-    const [authState, dispatch] = useReducer(authReducer, {}, init);
+    const [authState, dispatch] = useReducer(authReducer, [] , init);
     const login = (name = '') => {
     const user = {
       id: 1,
       name,
     }
     localStorage.setItem('user', JSON.stringify(user))
-    dispatch({type:types.login, payload:user})
+    dispatch({type:REDUCER_ACTION_TYPE.LOGING, payload:user})
     }
 
     const logout = () => {
       localStorage.removeItem('user');
       dispatch({
-        type: types.logout
+        type: REDUCER_ACTION_TYPE.LOGOUT
       })
     }
 
@@ -38,5 +38,11 @@ export const AuthProvider:FC<UserProps> = ({children}) => {
   )
 }
 
-export const AuthConsumer = ():UserProps| undefined => useContext(AuthContext);
+export const useDataUser = () => {
+  const userDataContext = useContext(AuthContext);
+  if(!userDataContext){
+    throw new Error('useDataUser should be inside the provider')
+  }
+  return userDataContext
+}
 

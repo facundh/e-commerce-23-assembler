@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { ProductConsumer } from '../../context/ProductProvider';
+import {  useProducts } from '../../context/ProductProvider';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -14,7 +14,7 @@ export const ProductDetailPage = () => {
 
     const { productStore } = useParams();
 
-    const {products} = ProductConsumer() ;
+    const {products} = useProducts() ;
 
     const wineSelected = productStore ? products.find(product => product.store === productStore) : undefined;
 

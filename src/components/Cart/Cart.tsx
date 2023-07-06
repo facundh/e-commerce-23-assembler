@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartConsumer } from '../../context/CartProvider';
+import { useDataUser } from '../../context/AuthProvider';
+import { useCart } from '../../context/CartProvider';
 import { ProductProps } from '../../types/types';
 
 
@@ -8,14 +9,13 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Container, CardContent, Card, CardMedia} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { AuthConsumer } from '../../context/AuthProvider';
 
 
 
 
 export const Cart:FC = (): ReactElement => {
-  const {user} = AuthConsumer()
-  const { cart, handleDeleteProduct, handleUpdateProduct, handleDownProduct} = CartConsumer();
+  const {user} = useDataUser()
+  const { cart, handleDeleteProduct, handleUpdateProduct, handleDownProduct} = useCart();
 
   const navigate = useNavigate();
   let total = cart.reduce((acc:number, item:number):number => acc + item.price * item.quantity , 0)

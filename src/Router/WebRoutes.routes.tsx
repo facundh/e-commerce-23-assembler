@@ -6,13 +6,13 @@ import { HomePage, ResumePage } from '../pages/index';
 import {ErrorPage} from '../pages/error/ErrorPage';
 import {ProductDetailPage} from '../pages/productDetails/ProductDetailPage.tsx';
 import {LandingPage} from '../pages/landing/LandingPage.tsx';
-import { AuthConsumer } from '../context/AuthProvider';
+import { useDataUser } from '../context/AuthProvider';
 import { ProtectedRoute } from '../utils/ProtectedRoute.tsx';
 import { CheckoutPage } from '../pages/checkout/CheckoutPage.tsx';
 import { FormPage } from '../pages/form/FormPage';
 
 const WebRoutes = ():ReactElement => {
-  const {user} = AuthConsumer();
+  const {user} = useDataUser();
   return (
     <>
       <BrowserRouter>

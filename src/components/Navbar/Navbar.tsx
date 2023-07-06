@@ -1,15 +1,15 @@
 import { ReactElement, useState, FC } from 'react';
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { NavListDrawer } from "./NavListDrawer";
 import { Button, Drawer, AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
-import StarIcon from '@mui/icons-material/Star';
+
 
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
-import { UserState } from '../../types/types';
-import { AuthConsumer } from '../../context/AuthProvider';
+import { UserProps} from '../../types/types';
+import { useDataUser } from '../../context/AuthProvider';
 
 
 
@@ -29,8 +29,8 @@ const navLinks = [
   },
 ]
 
-export const Navbar:FC<UserState> = ():ReactElement => {
-  const { user, login, logout } = AuthConsumer();
+export const Navbar:FC<UserProps> = ():ReactElement => {
+  const { user, login, logout } = useDataUser();
   
 
 
@@ -42,9 +42,7 @@ export const Navbar:FC<UserState> = ():ReactElement => {
 
   const onLogout = () => {
     logout();
-    // navigate('/products', {
-    //   replace:true
-    // })
+
     
   }
 

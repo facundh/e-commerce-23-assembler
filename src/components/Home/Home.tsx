@@ -1,6 +1,6 @@
 import { FC,  ReactElement } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { ProductConsumer } from '../../context/ProductProvider';
+import {  useProducts } from '../../context/ProductProvider';
 import {  ProductProps } from '../../types/types';
 import {Cards} from '../Cards/Cards';
 
@@ -12,7 +12,7 @@ import { Container, InputAdornment, TextField } from '@mui/material';
 
 export const Home:FC<ProductProps> = () => {
 
-    const { products } = ProductConsumer();
+    const { products } = useProducts();
 
     const [searchParams, setSearchParams] = useSearchParams();
 

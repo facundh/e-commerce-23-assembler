@@ -5,15 +5,25 @@ export const types = {
     logout:'LOG_OUT'
 }
 
-export const authReducer = (state:UserProps, action:types)=> {
+export const enum REDUCER_ACTION_TYPE {
+    LOGING, 
+    LOGOUT
+}
+
+ type reducerAction = {
+    type: REDUCER_ACTION_TYPE
+    payload?:string;
+}
+
+export const authReducer = (state:UserProps, action:reducerAction)=> {
   switch (action.type) {
-    case types.login:
+    case REDUCER_ACTION_TYPE.LOGING:
         return {
             ...state,
             isLogged:true,
             user:action.payload
         }
-       case types.logout:
+       case REDUCER_ACTION_TYPE.LOGOUT:
         return {
             id: '',
             isLogged:false,

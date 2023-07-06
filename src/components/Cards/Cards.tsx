@@ -1,6 +1,6 @@
-import { ProductProps, ProductsStateTypes } from '../../types/types';
+import { ProductProps} from '../../types/types';
 import { Link } from 'react-router-dom';
-import { CartConsumer } from '../../context/CartProvider';
+import { useCart } from '../../context/CartProvider';
 
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -16,7 +16,7 @@ import Card from '@mui/material/Card';
 export const Cards = (props: ProductProps ) => {
     const {id, title, description, img, store, price} = props;
    
- const { handleAddToCart  }:ProductsStateTypes  = CartConsumer();
+ const { handleAddToCart  } = useCart();
   return (
     <Card key={id} sx={{ width:'450px', maxHeight:'750px' ,maxWidth:'100%', marginBottom:10, marginTop:10, height:850,paddingTop:1, }}>
 
