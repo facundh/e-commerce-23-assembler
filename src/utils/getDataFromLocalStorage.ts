@@ -1,5 +1,5 @@
-export const initCart = ():any => {
-    const productsInLocalStorageCart = localStorage.getItem('cart');
+export const initCart = () => {
+    const productsInLocalStorageCart = localStorage.getItem('cart') as string ;
     if(productsInLocalStorageCart){
         try {
             return JSON.parse(productsInLocalStorageCart);

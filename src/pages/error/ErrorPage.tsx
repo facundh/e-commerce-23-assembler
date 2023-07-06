@@ -1,10 +1,10 @@
 
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
-// type Props = {}
+
 
 export const ErrorPage = () => {
   return (

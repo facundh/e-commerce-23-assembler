@@ -1,6 +1,6 @@
 import {FC,  createContext, useContext, useEffect,useReducer} from 'react';
-import { ProductsStateTypes, ProductProps } from '../types/types';
-import { initCartStorage, cartReducer } from './cartActions';
+import { ProductsStateTypes } from '../types/types';
+import { initCartStorage, cartReducer, REDUCER_ACTION_TYPE } from './cartActions';
 import { initCart } from '../utils/getDataFromLocalStorage';
 
 const CartContext = createContext<ProductsStateTypes>( {} as ProductsStateTypes);
@@ -17,25 +17,25 @@ export const CartProvider:FC<ProductsStateTypes> = ({children}) => {
   
     const handleAddToCart= (id:string):void => {
         dispatch({
-            type:"ADD_PRODUCT",
+            type:REDUCER_ACTION_TYPE.ADD_PRODUCT,
             payload:id
         })
     }
     const handleDeleteProduct = (id:string) => {
         dispatch({
-            type:"DELETE_PRODUCT",
+            type:REDUCER_ACTION_TYPE.DELETE_PRODUCT,
             payload:id
         })
     }
     const handleUpdateProduct = (id:string) => {
         dispatch({
-            type:"UP_A_PRODUCT",
+            type:REDUCER_ACTION_TYPE.UP_A_PRODUCT,
             payload:id
         })
     }
     const handleDownProduct = (id:string) => {
         dispatch({
-            type:"DOWN_A_PRODUCT",
+            type:REDUCER_ACTION_TYPE.DOWN_A_PRODUCT,
             payload:id
         })
     }

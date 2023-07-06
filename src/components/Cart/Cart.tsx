@@ -36,7 +36,7 @@ export const Cart:FC = (): ReactElement => {
             Total Items : {totalItems}
         </Typography>
          <Typography variant="body2" color="text.secondary" sx={{fontWeight:'bolder', fontSize:30, display:'block',textAlign:'center'}}>
-         Total Price: {total}
+         Total Price: $ {total}
         </Typography>
         <Typography sx={{textAlign:'center', mt:2}}>{user && user ? 'You Receive this package tomorrow' : 'You recevie de pacackge in ten days'}</Typography>
         <Container
@@ -90,7 +90,7 @@ export const Cart:FC = (): ReactElement => {
                {title}
              </Typography>
              <Typography variant="subtitle1" color="GrayText">
-               {description} - Price : ${price}
+               {description} - Price : $ {price}
              </Typography>
            </CardContent>
          </CardActionArea>

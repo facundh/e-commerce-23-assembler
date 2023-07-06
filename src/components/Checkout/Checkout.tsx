@@ -23,7 +23,7 @@ export const Checkout = () => {
             {cart.map(({img, title, price, quantity}:ProductProps) => 
                 
                     <Paper elevation={1} sx={{padding: 4, width:'50vw', margin:'0 auto', display:{xs:'flex', md:'flex', lg:'flex', flexDirection:'column'}, justifyContent:'space-around', alignItems:'center',flexWrap:'no-wrap', mt:2, mb:1.5}}>
-                        <img style={{width:'100px'}} src={img} />  <span style={{fontWeight:'bold'}}>Product: {title}</span>  <span>Price:U$S {price * quantity}</span>  <span>Quantity:{quantity}</span>     
+                        <img style={{width:'100px'}} src={img} />  <span style={{fontWeight:'bold'}}>Product: {title}</span>  <span>Price: ${price * quantity}</span>  <span>Quantity:{quantity}</span>     
                     </Paper>
               
                 )

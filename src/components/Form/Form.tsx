@@ -7,7 +7,7 @@ import { Button, Typography, Box} from "@mui/material"
 
 export const Form = () => {
   const { cart } = useCart();
-  const {user, logout} = useDataUser();
+  const {user} = useDataUser();
 
 const clearLocalStorage = () => {
   localStorage.removeItem('cart');
@@ -24,7 +24,7 @@ user ? total = total / 2 : total
       <Typography variant={'h3'} sx={{textAlign:'center', mb:2}}>Thank you for your purchase {user ? user.name : ''}</Typography>
             <Typography sx={{textAlign:'center', mt:2, mb:2}}>{user && user ? 'You will receive your order tomorrow' : 'You will receive your order in ten days'}</Typography>
             <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
-                <Typography variant='h5'> Total due: U$S {total}</Typography>
+                <Typography variant='h5'> Total due: ${total}</Typography>
                 <Link to='/'><Button variant='contained' onClick={clearLocalStorage} sx={{mt:2}}>Go to Main</Button></Link>
             </Box>
     </>

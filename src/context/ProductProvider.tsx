@@ -1,5 +1,5 @@
 import {FC,  createContext, useContext, useEffect,useState} from 'react';
-import {   ProductProps, ProductsItemProps } from '../types/types';
+import { ProductsItemProps } from '../types/types';
 
 
 const ProductContext = createContext<ProductsItemProps>( {} as ProductsItemProps);
