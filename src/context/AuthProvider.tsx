@@ -1,5 +1,5 @@
 import { createContext, FC, useContext, useReducer } from 'react';
-import { UserProps, User } from '../types/types';
+import { UserProps } from '../types/types';
 import { authReducer, REDUCER_ACTION_TYPE } from './authReducer';
 
 export const AuthContext = createContext<UserProps>({} as UserProps);
@@ -26,6 +26,7 @@ export const AuthProvider:FC<UserProps> = ({children}) => {
 
     const logout = () => {
       localStorage.removeItem('user');
+      localStorage.removeItem('cart');
       dispatch({
         type: REDUCER_ACTION_TYPE.LOGOUT
       })

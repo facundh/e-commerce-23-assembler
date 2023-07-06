@@ -7,7 +7,7 @@ import {  useCart } from "../../context/CartProvider";
 
 export const Form = () => {
   const { cart } = useCart();
-  const {user} = useDataUser();
+  const {user, logout} = useDataUser();
 
 
 let total = cart.reduce((acc:number, {price, quantity}):number => acc + price * quantity , 0)
@@ -23,7 +23,7 @@ user ? total = total / 2 : total
             <Typography sx={{textAlign:'center', mt:2, mb:2}}>{user && user ? 'You will receive your order tomorrow' : 'You will receive your order in ten days'}</Typography>
             <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column'}}>
                 <Typography variant='h5'> Total due: U$S {total}</Typography>
-                <Link to='/products'><Button variant='contained' sx={{mt:2}}>Go to Products</Button></Link>
+                <Link to='/'><Button variant='contained' onClick={logout} sx={{mt:2}}>Go to Main</Button></Link>
             </Box>
     </>
     

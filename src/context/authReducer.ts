@@ -10,7 +10,7 @@ export const enum REDUCER_ACTION_TYPE {
     LOGOUT
 }
 
- type reducerAction = {
+type reducerAction = {
     type: REDUCER_ACTION_TYPE
     payload?:string;
 }

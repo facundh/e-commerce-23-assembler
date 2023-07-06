@@ -1,12 +1,12 @@
 import {FC,  createContext, useContext, useEffect,useReducer} from 'react';
-import { Props, ProductsStateTypes, ProductProps } from '../types/types';
+import {  ProductsStateTypes} from '../types/types';
 import { initCartStorage, cartReducer } from './cartActions';
 import { initCart } from '../utils/getDataFromLocalStorage';
 
 const CartContext = createContext<ProductsStateTypes | undefined >( {} as ProductsStateTypes);
 
 
-export const CartProvider:FC<Props> = ({children}) => {
+export const CartProvider:FC<ProductsStateTypes> = ({children}) => {
     
     const [ cart , dispatch ] = useReducer(cartReducer, initCartStorage, initCart);
     
@@ -20,21 +20,21 @@ export const CartProvider:FC<Props> = ({children}) => {
             payload:id
         })
     }
-    const handleDeleteProduct = (id:any) => {
+    const handleDeleteProduct = (id:string) => {
         dispatch({
             type:"DELETE_PRODUCT",
             payload:id
         })
     }
-    const handleUpdateProduct = (id:any) => {
+    const handleUpdateProduct = (id:string) => {
         dispatch({
-            type:"ADD_A_PRODUCT",
+            type:"UP_A_PRODUCT",
             payload:id
         })
     }
-    const handleDownProduct = (id:any) => {
+    const handleDownProduct = (id:string) => {
         dispatch({
-            type:"DELETE_A_PRODUCT",
+            type:"DOWN_A_PRODUCT",
             payload:id
         })
     }

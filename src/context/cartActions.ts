@@ -7,8 +7,8 @@ const initCartStorage: ProductProps[] | [] = [];
 type CartActionType =
     | {type: "ADD_PRODUCT", payload: ProductProps | undefined}
     | {type: "DELETE_PRODUCT", payload: ProductProps | undefined}
-    | {type: "ADD_A_PRODUCT", payload: ProductProps | undefined}
-    | {type: "DELETE_A_PRODUCT", payload: ProductProps | undefined}
+    | {type: "UP_A_PRODUCT", payload: ProductProps | undefined}
+    | {type: "DOWN_A_PRODUCT", payload: ProductProps | undefined}
 
 const data = productsinStock;
 
@@ -26,7 +26,7 @@ const cartReducer =  (state: typeof initCartStorage, action: CartActionType):voi
         }
         case "DELETE_PRODUCT":
             return state.filter((item:any):boolean => item.id !== action.payload)
-        case "ADD_A_PRODUCT":
+        case "UP_A_PRODUCT":
             // eslint-disable-next-line no-case-declarations
             const isItemInCart = state.some((item):boolean => item.id === action.payload)
             if(isItemInCart){
@@ -34,7 +34,7 @@ const cartReducer =  (state: typeof initCartStorage, action: CartActionType):voi
                 return updateCartItems
             }
             break;
-        case "DELETE_A_PRODUCT":
+        case "DOWN_A_PRODUCT":
             // eslint-disable-next-line no-case-declarations
             const isItemInCartDown = state.some((item) => item.id === action.payload)
             if(isItemInCartDown){
