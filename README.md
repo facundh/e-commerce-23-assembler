@@ -12,6 +12,10 @@
 
 ### I decided to develop a small e-commerce of Argentine and Chilean wines. :file_folder:
 
+### Run Db-json
+:arrow_right: json-server --watch db.json
+### Run Projects
+:arrow_right: npm run dev
 
 ### Bellow are images of the project 📷
 
