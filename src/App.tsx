@@ -1,5 +1,4 @@
 
-
 import { ProductProvider } from './context/ProductProvider';
 import WebRoutes from './Router/WebRoutes.routes';
 import { CartProvider } from './context/CartProvider';
@@ -12,17 +11,15 @@ function App() {
   return (
     <>  
         
-        <ThemeConfig>
-          <AuthProvider>
-        
+          <ThemeConfig>
+            <AuthProvider>
             <ProductProvider>
               <CartProvider>
-                    <WebRoutes /> 
+                  <WebRoutes /> 
               </CartProvider>
             </ProductProvider>
-      
-          </AuthProvider>
-        </ThemeConfig>
+            </AuthProvider>
+          </ThemeConfig>
      
     </>
   )

@@ -98,4 +98,3 @@ export const Navbar:FC<UserProps> = ():ReactElement => {
     </header>
   )
 }
-
